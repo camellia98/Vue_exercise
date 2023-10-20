@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- M:模型：对应data中的数据
+        V：视图：模板
+        VM：视图模型：Vue实例对象 -->
+     <!-- 引入Vue -->
+     <script src="../js/vue.js"></script>
+</head>
+<body>
+    <!-- 准备一个容器 -->
+    <div id="root">
+        <h1>学校名称：{{name}}</h1>
+        <h2>学校地址：{{address}}</h2>
+        <h1>测试一下1:{{1+1}}</h1>
+        <h1>测试一下2:{{$options}}</h1>
+        <!-- vue里面有的模板都能用 -->
+    </div>
+    <script>
+       const vm = new Vue({
+            el:'#root',
+            data:{
+                name:'尚硅谷',
+                address:'青岛'
+            }
+        })
+        console.log(vm);
+    </script>
+    
+        
+</body>
+</html>
