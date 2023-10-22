@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <!-- 引入Vue -->
+     <script src="../js/vue.js"></script>
+</head>
+<body>
+     <!-- 准备一个容器 -->
+     <div id="root">
+        <h2>欢迎你来到尚硅谷学习</h2>
+        <!-- <button v-on:click="showinfo">点我提示信息</button> -->
+        <!--  v-on: = @-->
+        <button @click="showinfo">点我提示信息</button>
+
+    </div>
+
+    <script>
+        const vm =  new Vue({
+            el:'#root',
+            data:{
+                name:'尚硅谷'
+            },
+            methods:{
+                showinfo(event){
+                    // console.log(event.target.innerText);
+                    // console.log(this === vm);//此处的this是vm
+                    alert('同学你好')
+                }
+            }
+        })
+    </script>
+</body>
+</html>
