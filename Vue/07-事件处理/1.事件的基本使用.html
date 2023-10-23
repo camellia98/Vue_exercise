@@ -8,12 +8,20 @@
      <script src="../js/vue.js"></script>
 </head>
 <body>
+    <!-- 
+        事件的基本使用：
+            事件的回调需要配置在methods对象中，最终会在vm上
+            methods中配置的函数，不需要箭头函数，否则this就不熟vm了
+             methods中配置的函数，都是被Vue所管理的函数，this的指向是vm或组件实例对象
+              @click="demo"和@click="demo($event)"效果一直，但后者可以转参
+     -->
      <!-- 准备一个容器 -->
      <div id="root">
         <h2>欢迎你来到尚硅谷学习</h2>
         <!-- <button v-on:click="showinfo">点我提示信息</button> -->
         <!--  v-on: = @-->
-        <button @click="showinfo">点我提示信息</button>
+        <button @click="showinfo1">点我提示信息1(不传参)</button>
+        <button @click="showinfo2($event,66)">点我提示信息2（传参）</button>
 
     </div>
 
@@ -24,10 +32,16 @@
                 name:'尚硅谷'
             },
             methods:{
-                showinfo(event){
+                showinfo1(event){
                     // console.log(event.target.innerText);
                     // console.log(this === vm);//此处的this是vm
-                    alert('同学你好')
+                    alert('同学你好!')
+                },
+                showinfo2(event,number){
+                    console.log(event,number);
+                    // console.log(event.target.innerText);
+                    // console.log(this === vm);//此处的this是vm
+                    // alert('同学你好!!')
                 }
             }
         })
