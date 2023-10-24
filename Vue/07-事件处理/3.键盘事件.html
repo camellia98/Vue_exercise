@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <!-- 引入Vue -->
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <!-- 
+        Vue中常用的按键别名：
+        回车：enter
+        删除：deldte
+        空格：space
+        上：up
+        下：down
+        左：left
+        右：right
+     -->
+    <div id="root">
+        <h2>欢迎你来到{{name}}谷学习</h2>
+        <!-- 键盘keyup按下去弹起实现，keydown按下去没有弹起就能实现 -->
+        <input type="text" placeholder="按下回车提示输入" @keyup.enter="showinfo">
+    </div>
+
+    <script>
+        new Vue({
+            el:'#root',
+            data:{
+                name:'尚硅谷'
+            },
+            methods:{
+                showinfo(e){
+                    // console.log(e.target.value);
+                    console.log(e.keyCode);//keyCode代表按键编码
+                    
+                }
+            }
+        })
+    </script>
+</body>
+</html>

@@ -22,6 +22,17 @@
             padding: 5px;
             background-color: rgb(250, 233, 120);
         }
+        .list{
+            width: 200px;
+            height: 200px;
+            background-color: aquamarine;
+            /* 滚动条 */
+            overflow: auto;
+        }
+        li{
+            height: 100px;
+        }
+
        </style>
 </head>
 <body>
@@ -45,14 +56,27 @@
         <!--  once：事件只触发一次-->
         <button @click.once="showinfo">点我提示信息</button>
         <!--camture：使用事件的捕获模式  -->
-        <div class="box1" @click.camture="showMsg">
+        <div class="box1" @click.camture="showMsg(1)">
             div1
         
         <!-- showMsg展示信息 -->
-        <div class="box2" @click="showMsg">
+        <div class="box2" @click="showMsg(2)">
             div2
         </div>
     </div>
+    <!-- self：只有event.target是当前操作的元素是才触发事件 -->
+    <div class="demo1" @click.self="showinfo">
+        <button @click="showinfo">点我提示信息</button>
+    </div>
+    <!-- passive：事件的默认行为立即执行，无需等待事件回调执行完毕 -->
+    <ul @wheel.passive="demo" class="list">  
+        <!-- wheel滚动轮 -->
+        <!-- scroll滚动条 -->
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+    </ul>
     </div>
 
     <script>
@@ -66,9 +90,17 @@
                     // e.preventDefault()//阻止
 
                     alert('腾讯你好！')
+                    // console.log(e.target);
                 },
                 showMsg(msg){
                     console.log(msg);
+                },
+                demo(){
+                    // console.log('@');
+                    for(let i = 0;i < 100000; i++){
+                        console.log('#');
+                    }
+                    console.log('累活了');
                 }
             }
         })
