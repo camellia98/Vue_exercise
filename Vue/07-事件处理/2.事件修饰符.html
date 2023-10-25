@@ -51,7 +51,8 @@
         <a href="https://www.bilibili.com/" @click.prevent="showinfo">点我提示信息</a>
         <!-- stop:阻止事件冒泡 -->
         <div class="demo1" @click="showinfo">
-            <button @click.stop="showinfo">点我提示信息</button>
+            <!-- <button @click.stop="showinfo">点我提示信息</button> -->
+            <a href="https://www.bilibili.com/" @click.stop.prevent="showinfo">点我提示信息</a>
         </div>
         <!--  once：事件只触发一次-->
         <button @click.once="showinfo">点我提示信息</button>

@@ -14,18 +14,22 @@
         回车：enter
         删除：deldte
         空格：space
+        换行：tab(特殊，必须配合keydown去使用)
         上：up
         下：down
         左：left
         右：right
+        用法特殊：ctrl，alt，shift，meta
      -->
     <div id="root">
         <h2>欢迎你来到{{name}}谷学习</h2>
         <!-- 键盘keyup按下去弹起实现，keydown按下去没有弹起就能实现 -->
+        <!-- 如果是链接的单词，需要全部小写并用-隔开，如caps-lock -->
         <input type="text" placeholder="按下回车提示输入" @keyup.enter="showinfo">
     </div>
 
     <script>
+        Vue.config.keyCode.huiche = 13//定义了一个别名的按键
         new Vue({
             el:'#root',
             data:{
@@ -34,7 +38,7 @@
             methods:{
                 showinfo(e){
                     // console.log(e.target.value);
-                    console.log(e.keyCode);//keyCode代表按键编码
+                    console.log(e.key,e.keyCode);//keyCode代表按键编码
                     
                 }
             }
