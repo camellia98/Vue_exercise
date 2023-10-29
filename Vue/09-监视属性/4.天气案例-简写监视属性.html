@@ -7,13 +7,7 @@
     <!-- 引入Vue -->
     <script src="../js/vue.js"></script>
 </head>
-<body>
-    <!-- 
-        监视属性watch
-        1.当被监视的属性变化时，回调函数自动调用，进行相关操作
-        2.监视的属性必须存在，才能进行监视！！
-        3.两种写法：new Vue时传入watch配置；通过vm.$watch监视
-     -->
+<body> 
     <div id="root">
         <h2>今天天气很{{info}}</h2>
         <!-- 绑定事件的简写（注意可以写一些简单的语句）<button @click="isHot = !isHot">切换天气</button> -->
@@ -24,7 +18,7 @@
        const vm = new Vue({
             el:'#root',
             data:{
-                isHot:true
+                isHot:true,
             },
             computed:{
                 info(){
@@ -37,22 +31,33 @@
                 }
             },
             // watch监视
-            // watch:{
-            //     isHot:{// 'isHot':
-            //         immediate:true,//初始化时让handler调用一下
-            //         // handler调用：当isHot发生改变时
-            //         handler(newValue,oldValue){
-            //             console.log('isHot被修改了',newValue,oldValue);
-            //         }
-            //     }
-            // }
-        })
-        vm.$watch('isHot',{
-            immediate:true,//初始化时让handler调用一下
-                // handler调用：当isHot发生改变时
+            /* watch:{
+            正常写法
+                isHot:{// 'isHot':
+                    // immediate:true,//初始化时让handler调用一下
+                    // deep:true,深度监视
+                    // 只有handler才可以简写模式
+                    handler(newValue,oldValue){
+                        console.log('isHot被修改了',newValue,oldValue);
+                    }
+                },
+                简写
+                 isHot(newValue,oldValue){
+                        console.log('isHot被修改了',newValue,oldValue);
+                    }
+            }*/
+            /*正常写法
+            vm.$watch('isHot',{
+                immediate:true,
+                deep:true,
                 handler(newValue,oldValue){
                     console.log('isHot被修改了',newValue,oldValue);
                 }
+          }),*/
+          vm.$watch('isHot',function(newValue,oldValue){
+            console.log('isHot被修改了',newValue,oldValue);
+          })
+
         })
     </script>
 </body>

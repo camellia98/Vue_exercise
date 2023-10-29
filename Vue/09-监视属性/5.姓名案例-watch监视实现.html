@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <!-- 引入Vue -->
+     <script src="../js/vue.js"></script>
+</head>
+<body>
+    <!-- 
+        computed和watch之间的区别：
+        1.computed能完成，watch也能完成
+        2.watch也能完成，omputed不一定能完成，如：watch可以进行异步操作
+        3.所有不被Vue所管理的函数（如定时器的回调函数、ajsx的回调函数等、promise的回到函数），最好写成箭头函数，这样this指向的才是vm或组件实例函数
+     -->
+    <div id="root">
+        姓：<input type="text" v-model="firstName"><br><br>
+        名：<input type="text" v-model="lastName"><br><br>
+        全名：<span>{{fullName}}</span>
+    </div>
+
+    <script>
+       const vm = new Vue({
+            el:'#root',
+            data:{
+                firstName:'张',
+                lastName:'三',
+                fullName:'张-三'
+            },
+            //  watch能添加其他要求，计算属性不可以
+           watch:{
+            firstName(newvaule){
+                setTimeout(()=>{//=>箭头函数需要指向vm，一开始指的是window
+                    this.fullName = newvaule + '-' + this.lastName
+                },1000);
+                
+            },
+            lastName(newvaule){
+                this.fullName = this.firstName + '-' + newvaule
+            },
+           }
+        })
+    </script>
+</body>
+</html>
