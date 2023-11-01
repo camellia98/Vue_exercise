@@ -60,6 +60,13 @@
         <br><br>
         <!-- 绑定class样式--对象写法，适用：绑定的个数确定，名字确定,但动态决定用不用 -->
         <div class="basic" :class="classObj">{{name}}</div>
+        <br><br>
+        <!-- 绑定style样式--对象写法 -->
+        <div class="basic" :style="styleObj">{{name}}</div>
+        <br><br>
+        <!-- 绑定style样式--数组写法 -->
+        <div class="basic" :style="styleArr">{{name}}</div>
+
     </div>
 
     <script>
@@ -72,7 +79,23 @@
                 classObj:{
                     atguigu1:false,
                     atguigu2:false,
-                }
+                },
+                styleObj:{
+                    fontSize:'40px',
+                    color:'red'
+                },
+                styleObj2:{
+                   backgroundColor:'orange'
+                },
+                styleArr:[
+                    {
+                    fontSize:'40px',
+                    color:'red'
+                    },
+                    {
+                   backgroundColor:'orange'
+                    },
+                ]
             },
             methods: {
                 changMood(){
