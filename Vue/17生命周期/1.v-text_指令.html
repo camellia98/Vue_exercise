@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- !-- 引入Vue --> 
+     <script src="../js/vue.js"></script>
+    
+</head>
+<body>
+		<!-- 准备好一个容器-->
+    <div id="root">
+       <h2 :style="{opacity}">欢迎学习Vue</h2>
+       <!-- 如果opacity:opacity重名就可以简写方式opacity -->
+       <!-- opacity不透明度 -->
+    </div> 
+    <script>
+        // 正常写代码一般不需要vm
+        new Vue({
+            el:'#root',
+            data:{
+               opacity:1
+            },
+          
+            })
+
+            // 通过外部的 定时器实现（不推荐）
+            /*setInterval(()=>{
+                vm.opacity -= 0.01
+                if(vm.opacity <= 0)vm.opacity = 1
+            },16)*/
+    </script>
+</body>
+</html>

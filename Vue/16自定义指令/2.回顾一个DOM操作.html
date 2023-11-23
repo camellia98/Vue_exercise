@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+	<style>
+		.demo{
+			background-color: rebeccapurple;
+		}
+	</style>
 </head>
 <body>
 	<button id="btn">点我创建一个输入框</button>
@@ -11,6 +16,18 @@
 		const btn = document.getElementById('btn')
 		btn.onclick = ()=>{
 			const input = document.createElement('input')
+
+			input.className = 'demo'
+			input.value = 99
+			input.onclick = ()=>{alert(1)}
+
+			document.body.appendChild(input)
+
+			input.focus()
+			// 如果不防在这，执行顺序会产生错误
+			input.parentElement.style.backgroundColor = 'red'
+
+			input
 			document.body.appendChild(input)
 		}
 	</script>
