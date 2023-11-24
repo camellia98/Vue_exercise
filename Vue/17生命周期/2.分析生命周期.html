@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- !-- 引入Vue --> 
+     <script src="../js/vue.js"></script>
+    
+</head>
+<body>
+		<!-- 准备好一个容器-->
+        <!-- Compile编译；outerHTML外部的html；template模板 -->
+        <!-- render function渲染函数 -->
+        <!-- Virtual虚拟；patch比较 -->
+    <div id="root">
+        <h2>当前的n值是：{{n}}</h2>
+        <button @click="add">点我n+1</button>
+    </div> 
+    <script>
+        new Vue({
+            // 如果没有el：则使用vm.$mount(el)
+            el:'#root',
+            // template:`
+            // <div>
+            //     <h2>当前的n值是：{{n}}</h2>
+            //     <button @click="add">点我n+1</button>
+            //     </div>`,
+            // //必须字符串形式,`锚点符号
+            data:{
+				n:1
+			},
+			methods: {
+				add(){
+					console.log('add')
+					this.n++
+				},},
+                beforeCreate() {
+                    console.log('beforeCreate');
+                    console.log(this);//生命周期都是vm
+                   // debugger;断点调试
+                },
+                created() {
+                    console.log('created');
+                },
+                beforeMount() {//即将编译
+                    console.log('beforeMount');
+                },
+                mounted() {
+                    console.log('mounted');
+                },
+                beforeUpdate() {//数据是新的，但页面是旧的
+                    console.log('beforeUpdate');
+                },
+                updated() {
+                    console.log('updated');
+                    console.log(this.n);
+                    debugger;
+                },
+            })
+    </script>
+</body>
+</html>
