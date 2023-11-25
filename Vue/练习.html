@@ -8,7 +8,7 @@
      <script src="../Vue/js/vue.min.js"></script>
 </head>
 <body>
-    <div id="root">
+    <!-- <div id="root">
        <form @submit.prevent="demo">
         账号：<input type="text" v-model.trim="userInfo.account"><br><br>
         密码：<input type="password" v-model="userInfo.password"><br><br>
@@ -40,4 +40,46 @@
         })
     </script>
 </body>
-</html>
+</html> -->
+<template>
+    <div class="app-container">
+   
+   
+       <el-button type="text" @click="dialogVisible = true">点击打开 Dialog</el-button>
+   
+       <el-dialog title="提示" :visible.sync="dialogVisible" :before-close="handleClose">
+         <span>这是一段信息</span>
+         <span slot="footer" class="dialog-footer">
+           <el-button @click="dialogVisible = false">取 消</el-button>
+           <el-button type="primary" @click="dialogVisible = false">确 定</el-button>
+         </span>
+       </el-dialog>
+   
+    </div>
+  </template>
+   
+  <script>
+    export default {
+      data() {
+        return {
+          dialogVisible: false
+        };
+      },
+      methods: {
+        handleClose(done){
+          this.$confirm('确定关闭吗').then(() => {
+            // function(done)，done 用于关闭 Dialog
+            done();
+   
+            console.info("点击右上角 'X' ，取消按钮或遮罩层时触发");
+          }).catch(() => {
+   
+            console.log("点击确定时触发");
+          });
+        }
+      }
+    };
+  </script>
+  </body>
+  </html>
+  <el-button :disabled="requestLock">确定</el-button>
