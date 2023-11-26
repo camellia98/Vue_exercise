@@ -12,10 +12,12 @@
 		<!-- 准备好一个容器-->
         <!-- Compile编译；outerHTML外部的html；template模板 -->
         <!-- render function渲染函数 -->
-        <!-- Virtual虚拟；patch比较 -->
+        <!-- Virtual虚拟；patch比较;teardown移出废掉 -->
     <div id="root">
+        <h2 v-text="n"></h2>
         <h2>当前的n值是：{{n}}</h2>
         <button @click="add">点我n+1</button>
+        <button @click="bye">点我销毁vm</button>
     </div> 
     <script>
         new Vue({
@@ -34,28 +36,45 @@
 				add(){
 					console.log('add')
 					this.n++
-				},},
-                beforeCreate() {
+				},
+                bye(){
+                    console.log('bye');
+                    this.$destroy()//触发销毁的钩子
+                }
+            },
+            watch:{
+                n(){
+                    console.log('n变了');
+                }
+            },
+                beforeCreate() {//创建之前（数据监测，数据代理）
                     console.log('beforeCreate');
                     console.log(this);//生命周期都是vm
                    // debugger;断点调试
                 },
-                created() {
+                created() {//创建我完毕
                     console.log('created');
                 },
-                beforeMount() {//即将编译
+                beforeMount() {//即将编译，挂载之前
                     console.log('beforeMount');
                 },
-                mounted() {
+                mounted() {//挂载完毕
                     console.log('mounted');
                 },
                 beforeUpdate() {//数据是新的，但页面是旧的
                     console.log('beforeUpdate');
                 },
-                updated() {
+                updated() {//更新
                     console.log('updated');
                     console.log(this.n);
-                    debugger;
+                    // debugger;
+                },
+                beforeDestroy() {//销毁之前
+                    console.log('beforeDestroy');
+                    this.add()
+                },
+                destroyed() {//销毁
+                    console.log('destroyed');
                 },
             })
     </script>
