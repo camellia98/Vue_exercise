@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+      <!-- !-- 引入Vue --> 
+      <script src="../js/vue.js"></script>
+</head>
+<body>
+    <!-- 非单文件组件：一个文件中包含有n个组件 -->
+    <!-- 单文件组件：一个文件中只包含有1个组件  -->
+    <!-- extends继承 -->
+    <div id="root">
+      <h2>学校名称：{{schoolName}}</h2>
+      <h2>学校地址：{{address}}</h2> 
+      <hr>
+      <h2>学生姓名：{{sdentName}}</h2>
+      <h2>学生年龄：{{age}}</h2> 
+     </div> 
+     <script>
+
+        // 创建school组件
+        const school = Vue.extend
+
+        // 创建vm
+         /*new Vue({
+             el:'#root',
+             data:{
+               schoolName:'尚硅谷',
+               address:'青岛',
+               studentName:'张三',
+               age:18
+             },
+             })*/
+ 
+     </script>
+ </body>
+ </html>
