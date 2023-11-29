@@ -33,6 +33,10 @@
     <!-- extends继承 -->
     <!-- 定义和使用组件不能用驼峰命名法，会报错 -->
     <div id="root">
+      <hello></hello>
+			<hr>
+			<h1>{{msg}}</h1>
+			<hr>
     <!-- 第三步：编写组件标签-->
       <school></school>
       <hr>
@@ -40,7 +44,9 @@
       <student></student>
       
      </div> 
-     <div></div>
+     <div id="root2">
+			<hello></hello>
+		</div>
      <script>
 
         // 第一步：创建school组件
@@ -66,6 +72,7 @@
           },
         })
          // 第一步：创建student组件
+         //template:定义组件的名字
          const student = Vue.extend({
           template:`
           <div>
@@ -81,17 +88,36 @@
             }
           }
         })
+
+        //第一步：创建hello组件
+		  const hello = Vue.extend({
+			  template:`
+				  <div>	
+					  <h2>你好啊！{{name}}</h2>
+				  </div>
+			  `,
+			data(){
+				return {
+					name:'Tom'
+				}
+			}
+		})
+		
+		//第二步：全局注册组件
+		Vue.component('hello',hello)
         // components组件
         // 创建vm
          new Vue({
             el:'#root',
             // 第二步：注册组件（局部注册）
             components:{
-              school,
+              school,//整体写法（school：school因为相同，所以可以简写）
               student
             }
              })
- 
+      new Vue({
+			  el:'#root2',
+		  })
      </script>
  </body>
  </html>
